@@ -20,45 +20,36 @@ class EchoBot(commands.Bot):
         self.last_echo_time = 0  # Track when the last echo happened
 
     async def event_ready(self):
-        message.channel.send("Jsem tu kámo @mioogbeni")
         print(f"{self.nick} is online in {CHANNEL}!")
-
-    @commands.command()
-    async def hello(self, ctx: commands.Context):
-        # Here we have a command hello, we can invoke our command with our prefix and command name
-        # e.g ?hello
-        # We can also give our commands aliases (different names) to invoke with.
-
-        # Send a hello back!
-        # Sending a reply back to the channel is easy... Below is an example.
-        await ctx.send(f'Hello {ctx.author.name}!')
 
     async def event_message(self, message):
         if message.echo:  # Avoid responding to itself
             return
 
-        now = time.time()
+        await message.channel.send("FUNGUJU!")
 
-        # Check if the bot is on cooldown
-        if now - self.last_echo_time < COOLDOWN_PERIOD:
-            return  # Ignore all messages during cooldown
+        # now = time.time()
 
-        # Only process messages that match the target
-        if message.content.lower() == TARGET_MESSAGE:
-            # Add the timestamp to the cache
-            self.message_cache.append(now)
+        # # Check if the bot is on cooldown
+        # if now - self.last_echo_time < COOLDOWN_PERIOD:
+        #     return  # Ignore all messages during cooldown
 
-            # Remove old timestamps outside the TIME_WINDOW
-            self.message_cache = [
-                timestamp for timestamp in self.message_cache
-                if now - timestamp <= TIME_WINDOW
-            ]
+        # # Only process messages that match the target
+        # if message.content.lower() == TARGET_MESSAGE:
+        #     # Add the timestamp to the cache
+        #     self.message_cache.append(now)
 
-            # Check if the message count exceeds the threshold
-            if len(self.message_cache) >= MESSAGE_THRESHOLD:
-                await message.channel.send("FUNGUJU!")
-                self.last_echo_time = now  # Set the cooldown timer
-                self.message_cache.clear()  # Reset the cache after echoing
+        #     # Remove old timestamps outside the TIME_WINDOW
+        #     self.message_cache = [
+        #         timestamp for timestamp in self.message_cache
+        #         if now - timestamp <= TIME_WINDOW
+        #     ]
+
+        #     # Check if the message count exceeds the threshold
+        #     if len(self.message_cache) >= MESSAGE_THRESHOLD:
+        #         await message.channel.send("FUNGUJU!")
+        #         self.last_echo_time = now  # Set the cooldown timer
+        #         self.message_cache.clear()  # Reset the cache after echoing
 
 # Run the bot
 if __name__ == "__main__":
