@@ -8,8 +8,8 @@ BOT_TOKEN = os.getenv("BOT_TOKEN")
 CHANNEL = os.getenv("CHANNEL")
 
 # Thresholds and time windows
-MESSAGE_THRESHOLD = 3  # Number of repeats to trigger echo
-TIME_WINDOW = 5  # Time window in seconds
+MESSAGE_THRESHOLD = 5 # Number of repeats to trigger echo
+TIME_WINDOW = 10  # Time window in seconds
 COOLDOWN_PERIOD = 180  # Cooldown time in seconds (3 minutes)
 TARGET_MESSAGE = "!easy"  # The target message to track
 STATUS_COMMAND = "!mioogbeni"  # Command to check bot status
@@ -52,7 +52,7 @@ class EchoBot(commands.Bot):
 
             # Check if the message count exceeds the threshold
             if len(self.message_cache) >= MESSAGE_THRESHOLD:
-                await message.channel.send("FUNGUJU!")
+                await message.channel.send(TARGET_MESSAGE)
                 self.last_echo_time = now  # Set the cooldown timer
                 self.message_cache.clear()  # Reset the cache after echoing
 
