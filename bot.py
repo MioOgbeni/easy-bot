@@ -45,7 +45,7 @@ class EchoBot(commands.Bot):
 
             # Check if the message count exceeds the threshold
             if len(self.message_cache) >= MESSAGE_THRESHOLD:
-                await message.channel.send(TARGET_MESSAGE)
+                await message.channel.send("FUNGUJU!")
                 self.last_echo_time = now  # Set the cooldown timer
                 self.message_cache.clear()  # Reset the cache after echoing
 
