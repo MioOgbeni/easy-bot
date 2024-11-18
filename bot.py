@@ -8,7 +8,7 @@ BOT_TOKEN = os.getenv("BOT_TOKEN")
 CHANNEL = os.getenv("CHANNEL")
 
 # Thresholds and time windows
-MESSAGE_THRESHOLD = 5 # Number of repeats to trigger echo
+MESSAGE_THRESHOLD = 10 # Number of repeats to trigger echo
 TIME_WINDOW = 10  # Time window in seconds
 COOLDOWN_PERIOD = 180  # Cooldown time in seconds (3 minutes)
 TARGET_MESSAGE = "!easy"  # The target message to track
