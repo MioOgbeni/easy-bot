@@ -20,6 +20,7 @@ class EchoBot(commands.Bot):
         self.last_echo_time = 0  # Track when the last echo happened
 
     async def event_ready(self):
+        message.channel.send("Jsem tu kámo @mioogbeni")
         print(f"{self.nick} is online in {CHANNEL}!")
 
     async def event_message(self, message):
