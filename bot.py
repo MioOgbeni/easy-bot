@@ -23,6 +23,16 @@ class EchoBot(commands.Bot):
         message.channel.send("Jsem tu kámo @mioogbeni")
         print(f"{self.nick} is online in {CHANNEL}!")
 
+    @commands.command()
+    async def hello(self, ctx: commands.Context):
+        # Here we have a command hello, we can invoke our command with our prefix and command name
+        # e.g ?hello
+        # We can also give our commands aliases (different names) to invoke with.
+
+        # Send a hello back!
+        # Sending a reply back to the channel is easy... Below is an example.
+        await ctx.send(f'Hello {ctx.author.name}!')
+
     async def event_message(self, message):
         if message.echo:  # Avoid responding to itself
             return
