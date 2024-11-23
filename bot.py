@@ -39,8 +39,6 @@ class EchoBot(commands.Bot):
         # Check if the bot is on cooldown
         if now - self.last_echo_time < COOLDOWN_PERIOD:
             return  # Ignore all messages during cooldown
-        else:
-            print(f"Cooldown period over, resuming normal operation")
 
         # Only process messages that match the target
         if message.content.lower() == TARGET_MESSAGE:
