@@ -31,6 +31,7 @@ class EchoBot(commands.Bot):
         # Handle the status command, restricted to a specific user
         if message.content.lower() == STATUS_COMMAND and message.author.name.lower() == AUTHORIZED_STATUS_USER:
             await message.channel.send("Yes, I'm here bro!")
+            print(f"Status command triggered by {message.author.name}")
             return
 
         now = time.time()
@@ -38,6 +39,8 @@ class EchoBot(commands.Bot):
         # Check if the bot is on cooldown
         if now - self.last_echo_time < COOLDOWN_PERIOD:
             return  # Ignore all messages during cooldown
+        else:
+            print(f"Cooldown period over, resuming normal operation")
 
         # Only process messages that match the target
         if message.content.lower() == TARGET_MESSAGE:
@@ -53,6 +56,12 @@ class EchoBot(commands.Bot):
             # Check if the message count exceeds the threshold
             if len(self.message_cache) >= MESSAGE_THRESHOLD:
                 await message.channel.send(TARGET_MESSAGE)
+                print(f"********** ECHO **********")
+                print(f"Cache size {len(self.message_cache)} exceeds threshold {MESSAGE_THRESHOLD}")
+                print(f"Echoed message {TARGET_MESSAGE} to {CHANNEL}")
+                print(f"Cooldown period starts now {now}")
+                print(f"***************************")
+
                 self.last_echo_time = now  # Set the cooldown timer
                 self.message_cache.clear()  # Reset the cache after echoing
 
