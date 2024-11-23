@@ -30,6 +30,7 @@ class EchoBot(commands.Bot):
 
         # Handle the status command, restricted to a specific user
         if message.content.lower() == STATUS_COMMAND and message.author.name.lower() == AUTHORIZED_STATUS_USER:
+            time.sleep(2)  # Add a delay to simulate a slow response
             await message.channel.send("Yes, I'm here bro!")
             print(f"Status command triggered by {message.author.name}")
             return
