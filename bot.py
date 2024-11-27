@@ -10,7 +10,7 @@ CHANNEL = os.getenv("CHANNEL")
 # Thresholds and time windows
 MESSAGE_THRESHOLD = 10 # Number of repeats to trigger echo
 TIME_WINDOW = 10  # Time window in seconds
-COOLDOWN_PERIOD = 180  # Cooldown time in seconds (3 minutes)
+COOLDOWN_PERIOD = 60  # Cooldown time in seconds (1 minute)
 TARGET_MESSAGE = "!easy"  # The target message to track
 STATUS_COMMAND = "!mioogbeni"  # Command to check bot status
 AUTHORIZED_STATUS_USER = "mioogbeni"  # Username allowed to trigger status response
